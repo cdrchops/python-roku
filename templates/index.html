@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Roku TV</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<select id="myselect">
+{% for item in appList %}
+    <option>{{item}}</option>
+{% endfor %}
+</select> <button id="launch">Launch</button><br/><br/>
+<button id="home">Home</button><button id="back">Back</button><br/>
+<button id="play">Play</button><button id="pause">Pause</button><br/>
+<button id="rwd"> << RWD</button><button id="ffwd">FFWD >> </button><br/><br/>
+
+<script>
+    $("#launch").click(function() {
+        var appName = $( "#myselect option:selected" ).text();
+        console.log("appname " + appName);
+        $.ajax({
+          url: "/launchApp",
+          data: {'app_name': appName}
+        });
+    })
+
+    function runFun(url) {
+        $.ajax({
+          url: url
+        });
+    }
+
+    $("#home").click(function() {runFun("/home")})
+    $("#back").click(function() {runFun("/back")})
+    $("#play").click(function() {runFun("/play")})
+    $("#pause").click(function() {runFun("/pause")})
+    $("#rwd").click(function() {runFun("/rwd")})
+    $("#ffwd").click(function() {runFun("/ffwd")})
+</script>
+</body>
+</html>
