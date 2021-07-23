@@ -1,16 +1,27 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=2' name='viewport'/>
     <title>My Roku TV</title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        @media only screen and (min-device-width : 320px) and (max-device-width : 900px) {
+          body {
+              zoom: 100%;
+            {#background: #999;#}
+            {#width: 100%;#}
+          }
+        }
+    </style>
 </head>
 <body>
 <select id="myselect">
 {% for item in appList %}
     <option>{{item}}</option>
 {% endfor %}
-</select> <button id="launch">Launch</button><br/><br/>
+</select><br/><button id="launch">Launch</button><br/><br/>
 <button id="home">Home</button><button id="back">Back</button><br/>
 <button id="play">Play</button><button id="pause">Pause</button><br/>
 <button id="rwd"> << RWD</button><button id="ffwd">FFWD >> </button><br/><br/>
